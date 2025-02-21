@@ -10,8 +10,8 @@ const paymentRouter = Router()
 paymentRouter.post("/checkout-session", userVerify, async (req, res) => {
   const {userId} = req 
   const { amount,name } = req.body; // Amount in cents
-  const success_url = `http://localhost:5000/success/${amount}`
-  const cancel_url = "http://localhost:5000/cancel"
+  const success_url = `https://aimaginify.onrender.com//success/${amount}`
+  const cancel_url = "https://aimaginify.onrender.com/"
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
