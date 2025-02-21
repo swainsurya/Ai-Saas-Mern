@@ -33,8 +33,8 @@ The **Text-to-Image Generator Web App** is a SaaS-based platform that allows use
 ### **1️⃣ Clone the Repository**
 
 ```bash
-git clone https://github.com/your-repo/text-to-image-generator.git
-cd text-to-image-generator
+git clone git@github.com:swainsurya/Ai-Saas-Mern.git
+cd Ai-Saas-Mern
 ```
 
 ### **2️⃣ Install Dependencies**
