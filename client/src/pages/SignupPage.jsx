@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthProvider";
-import { toast } from "react-toastify";
 import { LoaderCircle } from "lucide-react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ export default function Signup() {
     try {
       const req = await axios.post("/user/register",{email,password})
       console.log(req.data)
-      navigate("/")
+      navigate("/login")
       setLoggedIn(true)
       setUser(req.data.newUser)
       toast.success("Registration Success")

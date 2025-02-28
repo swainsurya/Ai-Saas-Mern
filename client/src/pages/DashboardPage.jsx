@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Download, Loader, Save } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useAuth } from "@/context/AuthProvider";
-import { toast } from "react-toastify";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Dashboard() {
     const [imageCount, setImageCount] = useState(1);
@@ -13,20 +13,23 @@ export default function Dashboard() {
 
     const [prompt , setPrompt] = useState("");
 
-    const {credits , setCredits , setUser} = useAuth();
+    const { user,setUser} = useAuth();
 
     const handleGenerate = async() => {
+        if(prompt === "") {
+            toast.error("Prompt cannot be empty!")
+            return;
+        }
         setLoading(true);
         setGeneratedImages([]);
         try {
             const req = await axios.post("/image/generate",{prompt, count:imageCount})
             setGeneratedImages(req.data.images)
-            setCredits(req.data.user.credits)
             setUser(req.data.user)
             toast.success("Images are generated")
         } catch (error) {
             setGeneratedImages([])
-            toast.error(error.response.data.message)
+            toast.error("Failed to generate try again")
         }
         finally {
             setLoading(false)
@@ -42,7 +45,7 @@ export default function Dashboard() {
                     <div className="flex flex-col items-center mb-8">
                         <h1 className="md:text-5xl text-3xl font-extrabold drop-shadow-lg">Text-to-Image Generator</h1>
                         <span className="md:text-xl font-semibold mt-3 bg-gray-200 text-blue-700 px-6 py-2 rounded-full shadow-lg">
-                            Credits: {credits}
+                            Credits: {user.credits}
                         </span>
                     </div>
 

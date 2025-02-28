@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
 import { useAuth } from "@/context/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ export default function LoginPage() {
       console.log(user)
       setLoggedIn(true);
       toast.success("Login success")
-      navigate("/")
+      navigate("/dashboard")
     } catch (error) {
       toast.error(error.response.data.message)
     }

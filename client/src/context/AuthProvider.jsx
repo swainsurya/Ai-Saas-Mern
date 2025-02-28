@@ -13,7 +13,6 @@ export function AuthProvider({ children }) {
     setLoading(true)
     try {
       const req = await axios.get("/user")
-      console.log(req)
       setUser(req.data.user);
       setLoggedIn(true);
       setCredits(req.data.user.credits);

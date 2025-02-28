@@ -6,8 +6,8 @@ import LoginPage from './pages/LoginPage'
 import Signup from './pages/SignupPage'
 import PricingPage from './pages/PricingPage'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { ToastContainer } from 'react-toastify'
 import SuccessPage from './pages/PaymentSuccess'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
 
         <Route path='/pricing' element={<PricingPage />} />
       </Routes>
-      <ToastContainer position='bottom-right' />
+      <Toaster position='top-center' />
     </main>
   )
 }
