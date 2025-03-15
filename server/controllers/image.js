@@ -12,8 +12,11 @@ export const generate = async (req, res) => {
   
     try {
       const user = await userModel.findById(userId)
-      if(user.credits == 0) {
+      if(user.credits <= 0) {
         return res.json({message: "Your credits are used purchase to generate further"})
+      }
+      if(user.credits<count){
+        return res.json({message: "You do not have enough credits"})
       }
       console.log(`Generating ${count} images for prompt: ${prompt}`);
   
