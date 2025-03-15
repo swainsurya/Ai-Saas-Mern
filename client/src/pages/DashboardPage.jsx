@@ -24,8 +24,9 @@ export default function Dashboard() {
         setGeneratedImages([]);
         try {
             const req = await axios.post("/image/generate",{prompt, count:imageCount})
-            if(!req.data) {
-                toast.error("Insufficient Credits")
+            if(!req.data.status) {
+                toast.error(req.data.message)
+                return;
             }
             setGeneratedImages(req.data.images)
             setUser(req.data.user)
