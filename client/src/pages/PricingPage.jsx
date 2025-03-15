@@ -8,7 +8,7 @@ const plans = [
   {
     id: 1,
     type: "Free Plan",
-    credits: 100,
+    credits: 10,
     price: 0
   },
   {
