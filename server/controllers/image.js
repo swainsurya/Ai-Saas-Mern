@@ -46,6 +46,6 @@ export const generate = async (req, res) => {
       res.json({ images , user});
     } catch (error) {
       console.error("Image generation failed:", error.response?.data.toString() || error.message);
-      res.status(500).json({ error: "Failed to generate images" });
+      res.status(500).json({ error });
     }
   }
