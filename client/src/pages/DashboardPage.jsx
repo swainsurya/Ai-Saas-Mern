@@ -24,12 +24,15 @@ export default function Dashboard() {
         setGeneratedImages([]);
         try {
             const req = await axios.post("/image/generate",{prompt, count:imageCount})
+            if(!req.data) {
+                toast.error("Insufficient Credits")
+            }
             setGeneratedImages(req.data.images)
             setUser(req.data.user)
             toast.success("Images are generated")
         } catch (error) {
             setGeneratedImages([])
-            toast.error(error.rensponse?.message)
+            toast.error("Failed to generate try again")
         }
         finally {
             setLoading(false)
