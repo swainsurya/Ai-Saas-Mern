@@ -125,6 +125,6 @@ Feel free to **fork**, **create a pull request**, or **open an issue** to contri
 
 ---
 
-**💡 Developed by [Your Name]** 🚀
+**💡 Developed by ** 🚀
 
 Suryakanta Swain
